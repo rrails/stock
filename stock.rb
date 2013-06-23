@@ -1,5 +1,5 @@
 class Stock
-  attr_accessor :name, :numofshares
+  attr_accessor :sharename, :numofshares
 
   def initialize (name, numofshares)
     @sharename = name
@@ -14,17 +14,8 @@ class Stock
     @numofshares -= numofshares
   end
 
-  def Stock.quote(sharename)
-    YahooFinance::get_quotes(YahooFinance::StandardQuote, sharename)[sharename].lastTrade
+  def list_stock_details(stockquote)
+    puts ("\t Stock: #{sharename}, Quantity: #{numofshares}")
+    return stockquote.quote(sharename) * numofshares
   end
-
-
-
-
 end
-
-=begin
-  sell a stock
-  buy a stock
-  get price of stock
-=end
